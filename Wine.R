@@ -5,7 +5,7 @@
 library(readxl)
 library(neuralnet)
 library(ggplot2)
-data <- read_xlsx("../Gold & Fruits/data2.xlsx")
+data <- read_xlsx("data.xlsx")
 
 
 
@@ -157,20 +157,29 @@ length(year_wine[grep(6, year_wine$group), 3])
 
 h1 <- hclust(dist(data$Income))
 summary(h1)
-plot(h1, hang = -1)
-rect.hclust(h1, k = 8)
-group <- cutree(h1, k = 5)
+plot(h1, hang = -1, main = "������������� ������������� �� ��������")
+rect.hclust(h1, k = 6)
+group <- cutree(h1, k = 6)
 group
 
 inc_group <- data.frame(cbind(group, data$Income, data$MntWines))
 inc_group[]
 
 names(inc_group) <- c("group", "income", "wine")
-min(data$Year_Birth) # все года лежат в промежутке от 1941 до 1996. некоторые года в исходных данных были меньше 1900
-# - они были исключены за неактуальностью
-max(inc_group[grep(1, inc_group$group), 2])
-# Первая из 5 групп в среднем 1951(1941-1956) года рождения, вторая - 1965(1957-1972), третья - 1976(1973-1980),
-# четвертая - 1984(1981-1988), пятая - 1990(1989-1996)
+max(data$Income) # ����������� �������� 2447, ������������ 162397.
+
+
+inc_group[grep(3, inc_group$group), 2]
+inc_group[grep(8, inc_group$group), 2]
+
+groups <- NULL
+
+inc_group[grep(1, inc_group$group), 2] + inc_group[grep(2, inc_group$group), 2]
+
+groups <- bind(inc_group[grep(1, inc_group$group), 2], inc_group[grep(2, inc_group$group), 2],
+      inc_group[grep(3, inc_group$group), 2], inc_group[grep(4, inc_group$group), 2],
+      inc_group[grep(5, inc_group$group), 2], inc_group[grep(6, inc_group$group), 2],
+      inc_group[grep(7, inc_group$group), 2], inc_group[grep(8, inc_group$group), 2])
 
 mean(inc_group[grep(1, inc_group$group), 3])
 length(inc_group[grep(1, inc_group$group), 3])

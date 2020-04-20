@@ -5,7 +5,7 @@
 library(readxl)
 library(neuralnet)
 library(ggplot2)
-data <- read_xlsx("../Gold & Fruits/data.xlsx")
+data <- read_xlsx("data.xlsx")
 
 
 # Функция Normalize
