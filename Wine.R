@@ -157,7 +157,7 @@ length(year_wine[grep(6, year_wine$group), 3])
 
 h1 <- hclust(dist(data$Income))
 summary(h1)
-plot(h1, hang = -1, main = "������������� ������������� �� ��������")
+plot(h1, hang = -1, main = "????????????? ????????????? ?? ????????")
 rect.hclust(h1, k = 6)
 group <- cutree(h1, k = 6)
 group
@@ -166,34 +166,47 @@ inc_group <- data.frame(cbind(group, data$Income, data$MntWines))
 inc_group[]
 
 names(inc_group) <- c("group", "income", "wine")
-max(data$Income) # ����������� �������� 2447, ������������ 162397.
+max(data$Income) # ??????????? ???????? 2447, ???????????? 162397.
 
 
-inc_group[grep(3, inc_group$group), 2]
-inc_group[grep(8, inc_group$group), 2]
-
-groups <- NULL
-
-inc_group[grep(1, inc_group$group), 2] + inc_group[grep(2, inc_group$group), 2]
-
-groups <- bind(inc_group[grep(1, inc_group$group), 2], inc_group[grep(2, inc_group$group), 2],
-      inc_group[grep(3, inc_group$group), 2], inc_group[grep(4, inc_group$group), 2],
-      inc_group[grep(5, inc_group$group), 2], inc_group[grep(6, inc_group$group), 2],
-      inc_group[grep(7, inc_group$group), 2], inc_group[grep(8, inc_group$group), 2])
 
 mean(inc_group[grep(1, inc_group$group), 3])
 length(inc_group[grep(1, inc_group$group), 3])
-# Первая группа(1941-1956) тратит на вино 409,2 (202 человека)
+min(inc_group[grep(1, inc_group$group), 2])
+max(inc_group[grep(1, inc_group$group), 2])
+# Первая группа с зп от 89058 до 105471 тратит на вино 819.8 (26 человек)
+
 mean(inc_group[grep(2, inc_group$group), 3])
 length(inc_group[grep(2, inc_group$group), 3])
-# Вторая (1957-1972) тратит 329,5 (445 человек)
+min(inc_group[grep(2, inc_group$group), 2])
+max(inc_group[grep(2, inc_group$group), 2])
+
 mean(inc_group[grep(3, inc_group$group), 3])
 length(inc_group[grep(3, inc_group$group), 3])
-# Третья (1973-1980) тратит 251,8 (269 человек)
+min(inc_group[grep(3, inc_group$group), 2])
+max(inc_group[grep(3, inc_group$group), 2])
+
 mean(inc_group[grep(4, inc_group$group), 3])
 length(inc_group[grep(4, inc_group$group), 3])
-# Четвертая 1981-1988 - 212 (143 человека)
+min(inc_group[grep(4, inc_group$group), 2])
+max(inc_group[grep(4, inc_group$group), 2])
+
 mean(inc_group[grep(5, inc_group$group), 3])
 length(inc_group[grep(5, inc_group$group), 3])
-# Пятая 1989-1996 - 305 (46 человек)
+min(inc_group[grep(5, inc_group$group), 2])
+max(inc_group[grep(5, inc_group$group), 2])
 
+mean(inc_group[grep(6, inc_group$group), 3])
+length(inc_group[grep(6, inc_group$group), 3])
+min(inc_group[grep(6, inc_group$group), 2])
+max(inc_group[grep(6, inc_group$group), 2])
+
+mean(inc_group[grep(7, inc_group$group), 3])
+length(inc_group[grep(7, inc_group$group), 3])
+min(inc_group[grep(7, inc_group$group), 2])
+max(inc_group[grep(7, inc_group$group), 2])
+
+mean(inc_group[grep(8, inc_group$group), 3])
+length(inc_group[grep(8, inc_group$group), 3])
+min(inc_group[grep(8, inc_group$group), 2])
+max(inc_group[grep(8, inc_group$group), 2])
