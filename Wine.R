@@ -88,7 +88,7 @@ phd
 length(phd[grep(0, phd$kids), 1])
 mean(as.numeric(phd[grep(0, phd$kids), 1]))
 
-# в это половине 99 Master без детей со средними тратами на вино 480.7 и 157 PhD со средними тратами 584.8 без детей
+# в этой половине 99 Master без детей со средними тратами на вино 480.7 и 156 PhD со средними тратами 583.6 без детей
 
 
 # Вино Master и PhD с подростками
@@ -127,7 +127,7 @@ group[group<=1980 & group>=1971] = 4
 group[group<=1990 & group>=1981] = 5
 group[group<=2000 & group>=1991] = 6
 
-group
+group[1:100]
 
 year_wine <- cbind(group, data$Year_Birth, data$MntWines)
 year_wine <- data.frame(year_wine)
@@ -157,56 +157,110 @@ length(year_wine[grep(6, year_wine$group), 3])
 
 h1 <- hclust(dist(data$Income))
 summary(h1)
-plot(h1, hang = -1, main = "Иерархическая кластеризация по зарплате")
+plot(h1, hang = -1, main = "????????????? ????????????? ?? ????????")
 rect.hclust(h1, k = 6)
 group <- cutree(h1, k = 6)
-group
+group[1:100]
 
-inc_group <- data.frame(cbind(group, data$Income, data$MntWines))
-inc_group[]
+inc_group <- data.frame(cbind(group, data$Income, data$MntWines, data$Kidhome, data$Year_Birth, data$Education), stringsAsFactors = FALSE)
+names(inc_group) <- c("group", "income", "wine", "kids", "year", "educ")
+inc_group[1:5, ]
 
-names(inc_group) <- c("group", "income", "wine")
-max(data$Income) # Минимальная зп 2447, максимальная 162397.
+my_mean <- function(x)
+{
+  return (mean(as.numeric(x)))
+}
 
 
-
-mean(inc_group[grep(1, inc_group$group), 3])
+my_mean(inc_group[grep(1, inc_group$group), 3])
 length(inc_group[grep(1, inc_group$group), 3])
 min(inc_group[grep(1, inc_group$group), 2])
 max(inc_group[grep(1, inc_group$group), 2])
 # Первая группа с зп от 89058 до 105471 тратит на вино 819.8 (26 человек)
 
-mean(inc_group[grep(2, inc_group$group), 3])
+my_mean(inc_group[grep(2, inc_group$group), 3])
 length(inc_group[grep(2, inc_group$group), 3])
 min(inc_group[grep(2, inc_group$group), 2])
 max(inc_group[grep(2, inc_group$group), 2])
+# Вторая группа с зп от 43456 до 60714 тратит на вино 266.4 (265 человек)
 
-mean(inc_group[grep(3, inc_group$group), 3])
+my_mean(inc_group[grep(3, inc_group$group), 3])
 length(inc_group[grep(3, inc_group$group), 3])
 min(inc_group[grep(3, inc_group$group), 2])
 max(inc_group[grep(3, inc_group$group), 2])
+# Третья группа с зп от 61010 до 88347 тратит на вино 592.1 (393 человек)
 
-mean(inc_group[grep(4, inc_group$group), 3])
+my_mean(inc_group[grep(4, inc_group$group), 3])
 length(inc_group[grep(4, inc_group$group), 3])
 min(inc_group[grep(4, inc_group$group), 2])
 max(inc_group[grep(4, inc_group$group), 2])
+# Четвертая группа с зп от 18100 до 43185 тратит на вино 43.7 (370 человек)
 
-mean(inc_group[grep(5, inc_group$group), 3])
+my_mean(inc_group[grep(5, inc_group$group), 3])
 length(inc_group[grep(5, inc_group$group), 3])
 min(inc_group[grep(5, inc_group$group), 2])
 max(inc_group[grep(5, inc_group$group), 2])
+# Пятая группа с зп от 2447 до 17487 тратит на вино 10.5 (47 человек)
 
-mean(inc_group[grep(6, inc_group$group), 3])
+my_mean(inc_group[grep(6, inc_group$group), 3])
 length(inc_group[grep(6, inc_group$group), 3])
 min(inc_group[grep(6, inc_group$group), 2])
 max(inc_group[grep(6, inc_group$group), 2])
+# Шестая группа с зп от 153924 до 162397 тратит на вино 40.3 (4 человека)
 
-mean(inc_group[grep(7, inc_group$group), 3])
-length(inc_group[grep(7, inc_group$group), 3])
-min(inc_group[grep(7, inc_group$group), 2])
-max(inc_group[grep(7, inc_group$group), 2])
+# Группа с зп 60+ без детей
+short <- inc_group[inc_group$income > 60000, 3:5]
+short[1:3, ]
+tmp <- short[short$kids == 0, 1]
+tmp[1:100]
 
-mean(inc_group[grep(8, inc_group$group), 3])
-length(inc_group[grep(8, inc_group$group), 3])
-min(inc_group[grep(8, inc_group$group), 2])
-max(inc_group[grep(8, inc_group$group), 2])
+my_mean(tmp)
+# Сравним со средними тратами на вино
+my_mean(tmp) > my_mean(data$MntWines)
+length(tmp)
+
+# Группа с зп 60+ без детей PhD
+short <- inc_group[inc_group$income > 60000, 3:6]
+short[1:3, ]
+tmp <- short[short$educ == "PhD", 1]
+tmp[1:100]
+
+my_mean(tmp)
+my_mean(tmp) > my_mean(data$MntWines)
+length(tmp)
+
+# Группа с зп 60+ с PhD
+short <- inc_group[inc_group$income > 60000, 3:6]
+short[1:3, ]
+tmp <- short[short$kids == 0, 1:3]
+tmp <- short[short$educ == "PhD", 1]
+tmp[1:100]
+
+my_mean(tmp)
+my_mean(tmp) > mean(data$MntWines)
+length(tmp)
+
+# Группа с PhD без детей
+short <- inc_group[inc_group$educ == "PhD", 3:5]
+short[1:3, ]
+tmp <- short[short$kids == 0, 1]
+tmp[1:100]
+
+my_mean(tmp)
+my_mean(tmp) > mean(data$MntWines)
+length(tmp)
+
+# Группа с зп 60+ без детей старше 1970
+short <- inc_group[inc_group$income > 60000, 3:5]
+short[1:3, ]
+tmp <- short[short$kids == 0, 1:3]
+tmp <- tmp[tmp$year <= 1960, 1]
+tmp[1:100]
+
+my_mean(tmp)
+my_mean(tmp) > mean(data$MntWines)
+length(as.numeric(tmp))
+
+# Таким образом получилось нащупать факторы, наиболее сильно влияющие на покупку вина, среди них образование - PhD, отсутствие
+# маленьких детей, зарплата 60+, год рождения - меньше 1960. оптимальным будет выбор с относительно большой средней ценой, и не
+# очень большим количеством представителей данной группы.
