@@ -261,3 +261,60 @@ length(as.numeric(tmp))
 # Таким образом получилось нащупать факторы, наиболее сильно влияющие на покупку вина, среди них образование - PhD, отсутствие
 # маленьких детей, зарплата 60+, год рождения - меньше 1960. оптимальным будет выбор с относительно большой средней ценой, и не
 # очень большим количеством представителей данной группы.
+
+# Ответ на первую компанию
+lol <- cbind(data$MntWines, data$AcceptedCmp1)
+lol <- data.frame(lol)
+names(lol) <- c("wine", "recency")
+lol[1:3, ]
+
+mean(lol[lol$recency == 1, 1])
+length(lol[lol$recency == 1, 1])
+# Клиенты ответившие на первую компанию (73 человека) тратят 765.9
+
+
+# Ответ на вторую компанию
+lol <- cbind(data$MntWines, data$AcceptedCmp2)
+lol <- data.frame(lol)
+names(lol) <- c("wine", "recency")
+lol[1:3, ]
+
+mean(lol[lol$recency == 1, 1])
+length(lol[lol$recency == 1, 1])
+
+# Ответ на третью компанию
+lol <- cbind(data$MntWines, data$AcceptedCmp3)
+lol <- data.frame(lol)
+names(lol) <- c("wine", "recency")
+lol[1:3, ]
+
+mean(lol[lol$recency == 1, 1])
+length(lol[lol$recency == 1, 1])
+
+# Ответ на четвертую компанию
+lol <- cbind(data$MntWines, data$AcceptedCmp4)
+lol <- data.frame(lol)
+names(lol) <- c("wine", "recency")
+lol[1:3, ]
+
+mean(lol[lol$recency == 1, 1])
+length(lol[lol$recency == 1, 1])
+
+# Ответ на пятую компанию
+lol <- cbind(data$MntWines, data$AcceptedCmp5)
+lol <- data.frame(lol)
+names(lol) <- c("wine", "recency")
+lol[1:3, ]
+
+mean(lol[lol$recency == 1, 1])
+length(lol[lol$recency == 1, 1])
+
+# Ответ на последнюю компанию
+lol <- cbind(data$MntWines, data$Response)
+lol <- data.frame(lol)
+names(lol) <- c("wine", "recency")
+lol[1:3, ]
+
+mean(lol[lol$recency == 1, 1])
+length(lol[lol$recency == 1, 1])
+
