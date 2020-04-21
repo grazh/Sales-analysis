@@ -29,9 +29,8 @@ Fish_kids[1:5,]
 mean(Fish_kids[grep(0, Fish_kids$kids), 2])
 mean(Fish_kids[grep(1, Fish_kids$kids), 2])
 mean(Fish_kids[grep(2, Fish_kids$kids), 2])
-data$Kidhome
 Fish_kids <- scale(Fish_kids, center = FALSE)
-Fish_kids
+Fish_kids[1:3,]
 model1 <- neuralnet(data = Fish_kids, Fish ~ kids, threshold = 0.001, lifesign = "full", hidden = 0)
 plot(model1)
 
@@ -62,7 +61,6 @@ names(Fish_educ) <- c("educ", "Fish", "kids")
 Fish_educ[1:3,]
 master <- Fish_educ[grep("PhD", Fish_educ$educ), 2:3]
 length(master[grep(0, master$kids), 1])
-master[grep(0, master$kids), 1:2]
 
 
 masta <- Fish_educ[grep("Master", Fish_educ$educ), 2:3]
@@ -71,7 +69,6 @@ length(masta[masta == 0])
 mean(as.numeric(masta[grep(0, masta$kids), 1]))
 
 phd <- Fish_educ[grep("PhD", Fish_educ$educ), 2:3]
-phd
 length(phd[grep(0, phd$kids), 1])
 mean(as.numeric(phd[grep(0, phd$kids), 1]))
 
@@ -84,11 +81,9 @@ Fish_educ[1:3,]
 
 masta <- Fish_educ[grep("Master", Fish_educ$educ), 2:3]
 length(masta[grep(0, masta$teen), 1])
-masta[grep(0, masta$teen), 1]
 mean(as.numeric(masta[grep(0, masta$teen), 1]))
 
 phd <- Fish_educ[grep("PhD", Fish_educ$educ), 2:3]
-phd
 length(phd[grep(0, phd$teen), 1])
 mean(as.numeric(phd[grep(0, phd$teen), 1]))
 
@@ -109,7 +104,7 @@ group[group<=1980 & group>=1971] = 4
 group[group<=1990 & group>=1981] = 5
 group[group<=2000 & group>=1991] = 6
 
-group
+group[1:100]
 
 year_Fish <- cbind(group, data$Year_Birth, data$MntFishProducts)
 year_Fish <- data.frame(year_Fish)
@@ -142,14 +137,11 @@ summary(h1)
 plot(h1, hang = -1, main = "Иерархическая кластеризация по зарплате")
 rect.hclust(h1, k = 6)
 group <- cutree(h1, k = 6)
-group
+group[1:100]
 
 inc_group <- data.frame(cbind(group, data$Income, data$MntFishProducts))
-inc_group[]
-
 names(inc_group) <- c("group", "income", "Fish")
-max(data$Income) # Минимальная зп 2447, максимальная 162397.
-
+inc_group[1:3,]
 
 
 mean(inc_group[grep(1, inc_group$group), 3])

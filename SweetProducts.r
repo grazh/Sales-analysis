@@ -29,9 +29,8 @@ sweets_kids[1:5,]
 mean(sweets_kids[grep(0, sweets_kids$kids), 2])
 mean(sweets_kids[grep(1, sweets_kids$kids), 2])
 mean(sweets_kids[grep(2, sweets_kids$kids), 2])
-data$Kidhome
 sweets_kids <- scale(sweets_kids, center = FALSE)
-sweets_kids
+sweets_kids[1:3,]
 model1 <- neuralnet(data = sweets_kids, sweets ~ kids, threshold = 0.001, lifesign = "full", hidden = 0)
 plot(model1)
 
@@ -62,8 +61,6 @@ names(sweets_educ) <- c("educ", "sweets", "kids")
 sweets_educ[1:3,]
 master <- sweets_educ[grep("PhD", sweets_educ$educ), 2:3]
 length(master[grep(0, master$kids), 1])
-master[grep(0, master$kids), 1:2]
-
 
 masta <- sweets_educ[grep("Master", sweets_educ$educ), 2:3]
 length(masta[grep(0, masta$kids), 1])
@@ -71,7 +68,6 @@ length(masta[masta == 0])
 mean(as.numeric(masta[grep(0, masta$kids), 1]))
 
 phd <- sweets_educ[grep("PhD", sweets_educ$educ), 2:3]
-phd
 length(phd[grep(0, phd$kids), 1])
 mean(as.numeric(phd[grep(0, phd$kids), 1]))
 
@@ -84,11 +80,9 @@ sweets_educ[1:3,]
 
 masta <- sweets_educ[grep("Master", sweets_educ$educ), 2:3]
 length(masta[grep(0, masta$teen), 1])
-masta[grep(0, masta$teen), 1]
 mean(as.numeric(masta[grep(0, masta$teen), 1]))
 
 phd <- sweets_educ[grep("PhD", sweets_educ$educ), 2:3]
-phd
 length(phd[grep(0, phd$teen), 1])
 mean(as.numeric(phd[grep(0, phd$teen), 1]))
 
@@ -109,7 +103,7 @@ group[group<=1980 & group>=1971] = 4
 group[group<=1990 & group>=1981] = 5
 group[group<=2000 & group>=1991] = 6
 
-group
+group[1:100]
 
 year_sweets <- cbind(group, data$Year_Birth, data$MntSweetProducts)
 year_sweets <- data.frame(year_sweets)
@@ -142,13 +136,11 @@ summary(h1)
 plot(h1, hang = -1, main = "Иерархическая кластеризация по зарплате")
 rect.hclust(h1, k = 6)
 group <- cutree(h1, k = 6)
-group
+group[1:100]
 
 inc_group <- data.frame(cbind(group, data$Income, data$MntSweetProducts))
-inc_group[]
-
 names(inc_group) <- c("group", "income", "sweets")
-max(data$Income) # Минимальная зп 2447, максимальная 162397.
+inc_group[1:3,]
 
 
 

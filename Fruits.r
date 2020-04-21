@@ -1,4 +1,3 @@
-#Попытка сделать Fruits
 
 # Fruits от Education
 
@@ -29,9 +28,8 @@ fruits_kids[1:5,]
 mean(fruits_kids[grep(0, fruits_kids$kids), 2])
 mean(fruits_kids[grep(1, fruits_kids$kids), 2])
 mean(fruits_kids[grep(2, fruits_kids$kids), 2])
-data$Kidhome
 fruits_kids <- scale(fruits_kids, center = FALSE)
-fruits_kids
+fruits_kids[1:3, ]
 model1 <- neuralnet(data = fruits_kids, fruits ~ kids, threshold = 0.001, lifesign = "full", hidden = 0)
 plot(model1)
 
@@ -62,7 +60,6 @@ names(fruits_educ) <- c("educ", "fruits", "kids")
 fruits_educ[1:3,]
 master <- fruits_educ[grep("PhD", fruits_educ$educ), 2:3]
 length(master[grep(0, master$kids), 1])
-master[grep(0, master$kids), 1:2]
 
 
 masta <- fruits_educ[grep("Master", fruits_educ$educ), 2:3]
@@ -71,7 +68,6 @@ length(masta[masta == 0])
 mean(as.numeric(masta[grep(0, masta$kids), 1]))
 
 phd <- fruits_educ[grep("PhD", fruits_educ$educ), 2:3]
-phd
 length(phd[grep(0, phd$kids), 1])
 mean(as.numeric(phd[grep(0, phd$kids), 1]))
 
@@ -84,11 +80,9 @@ fruits_educ[1:3,]
 
 masta <- fruits_educ[grep("Master", fruits_educ$educ), 2:3]
 length(masta[grep(0, masta$teen), 1])
-masta[grep(0, masta$teen), 1]
 mean(as.numeric(masta[grep(0, masta$teen), 1]))
 
 phd <- fruits_educ[grep("PhD", fruits_educ$educ), 2:3]
-phd
 length(phd[grep(0, phd$teen), 1])
 mean(as.numeric(phd[grep(0, phd$teen), 1]))
 
@@ -109,7 +103,7 @@ group[group<=1980 & group>=1971] = 4
 group[group<=1990 & group>=1981] = 5
 group[group<=2000 & group>=1991] = 6
 
-group
+group[1:100]
 
 year_fruits <- cbind(group, data$Year_Birth, data$MntFruits)
 year_fruits <- data.frame(year_fruits)
@@ -142,14 +136,11 @@ summary(h1)
 plot(h1, hang = -1, main = "Иерархическая кластеризация по зарплате")
 rect.hclust(h1, k = 6)
 group <- cutree(h1, k = 6)
-group
+group[1:100]
 
 inc_group <- data.frame(cbind(group, data$Income, data$MntFruits))
-inc_group[]
-
 names(inc_group) <- c("group", "income", "fruits")
-max(data$Income) # Минимальная зп 2447, максимальная 162397.
-
+inc_group[1:3,]
 
 
 mean(inc_group[grep(1, inc_group$group), 3])

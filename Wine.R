@@ -38,9 +38,9 @@ wine_kids[1:5,]
 mean(wine_kids[grep(0, wine_kids$kids), 2])
 mean(wine_kids[grep(1, wine_kids$kids), 2])
 mean(wine_kids[grep(2, wine_kids$kids), 2])
-data$Kidhome
+data$Kidhome[1:100]
 wine_kids <- scale(wine_kids, center = FALSE)
-wine_kids
+wine_kids[1:5,]
 model1 <- neuralnet(data = wine_kids, wine ~ kids, threshold = 0.001, lifesign = "full", hidden = 0)
 plot(model1)
 # больше всего на вино тратят клиенты без детей, на их фоне с 1 и 2 детьмя тратят в 4 и 7,5 раз меньше. Таким образом клиенты
@@ -75,7 +75,6 @@ names(wine_educ) <- c("educ", "wine", "kids")
 wine_educ[1:3,]
 master <- wine_educ[grep("PhD", wine_educ$educ), 2:3]
 length(master[grep(0, master$kids), 1])
-master[grep(0, master$kids), 1:2]
 
 
 masta <- wine_educ[grep("Master", wine_educ$educ), 2:3]
@@ -84,7 +83,7 @@ length(masta[masta == 0])
 mean(as.numeric(masta[grep(0, masta$kids), 1]))
 
 phd <- wine_educ[grep("PhD", wine_educ$educ), 2:3]
-phd
+phd[1:5, ]
 length(phd[grep(0, phd$kids), 1])
 mean(as.numeric(phd[grep(0, phd$kids), 1]))
 
@@ -100,11 +99,9 @@ wine_educ[1:3,]
 
 masta <- wine_educ[grep("Master", wine_educ$educ), 2:3]
 length(masta[grep(0, masta$teen), 1])
-masta[grep(0, masta$teen), 1]
 mean(as.numeric(masta[grep(0, masta$teen), 1]))
 
 phd <- wine_educ[grep("PhD", wine_educ$educ), 2:3]
-phd
 length(phd[grep(0, phd$teen), 1])
 mean(as.numeric(phd[grep(0, phd$teen), 1]))
 
@@ -212,7 +209,7 @@ max(inc_group[grep(6, inc_group$group), 2])
 short <- inc_group[inc_group$income > 60000, 3:5]
 short[1:3, ]
 tmp <- short[short$kids == 0, 1]
-tmp[1:100]
+tmp[1:30]
 
 my_mean(tmp)
 # Сравним со средними тратами на вино
@@ -223,7 +220,7 @@ length(tmp)
 short <- inc_group[inc_group$income > 60000, 3:6]
 short[1:3, ]
 tmp <- short[short$educ == "PhD", 1]
-tmp[1:100]
+tmp[1:30]
 
 my_mean(tmp)
 my_mean(tmp) > my_mean(data$MntWines)
@@ -234,7 +231,7 @@ short <- inc_group[inc_group$income > 60000, 3:6]
 short[1:3, ]
 tmp <- short[short$kids == 0, 1:3]
 tmp <- short[short$educ == "PhD", 1]
-tmp[1:100]
+tmp[1:30]
 
 my_mean(tmp)
 my_mean(tmp) > mean(data$MntWines)
@@ -244,7 +241,7 @@ length(tmp)
 short <- inc_group[inc_group$educ == "PhD", 3:5]
 short[1:3, ]
 tmp <- short[short$kids == 0, 1]
-tmp[1:100]
+tmp[1:30]
 
 my_mean(tmp)
 my_mean(tmp) > mean(data$MntWines)
@@ -255,7 +252,7 @@ short <- inc_group[inc_group$income > 60000, 3:5]
 short[1:3, ]
 tmp <- short[short$kids == 0, 1:3]
 tmp <- tmp[tmp$year <= 1960, 1]
-tmp[1:100]
+tmp[1:30]
 
 my_mean(tmp)
 my_mean(tmp) > mean(data$MntWines)
