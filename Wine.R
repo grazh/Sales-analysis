@@ -263,58 +263,58 @@ length(as.numeric(tmp))
 # очень большим количеством представителей данной группы.
 
 # Ответ на первую компанию
-lol <- cbind(data$MntWines, data$AcceptedCmp1)
-lol <- data.frame(lol)
-names(lol) <- c("wine", "recency")
-lol[1:3, ]
+cmp <- cbind(data$MntWines, data$AcceptedCmp1)
+cmp <- data.frame(cmp)
+names(cmp) <- c("wine", "cmp1")
+cmp[1:3, ]
 
-mean(lol[lol$recency == 1, 1])
-length(lol[lol$recency == 1, 1])
+mean(cmp[cmp$cmp1 == 1, 1])
+length(cmp[cmp$cmp1 == 1, 1])
 # Клиенты ответившие на первую компанию (73 человека) тратят 765.9
 
 
 # Ответ на вторую компанию
-lol <- cbind(data$MntWines, data$AcceptedCmp2)
-lol <- data.frame(lol)
-names(lol) <- c("wine", "recency")
-lol[1:3, ]
+cmp <- cbind(data$MntWines, data$AcceptedCmp2)
+cmp <- data.frame(cmp)
+names(cmp) <- c("wine", "cmp2")
+cmp[1:3, ]
 
-mean(lol[lol$recency == 1, 1])
-length(lol[lol$recency == 1, 1])
+mean(cmp[cmp$cmp2 == 1, 1])
+length(cmp[cmp$cmp2 == 1, 1])
 
 # Ответ на третью компанию
-lol <- cbind(data$MntWines, data$AcceptedCmp3)
-lol <- data.frame(lol)
-names(lol) <- c("wine", "recency")
-lol[1:3, ]
+cmp <- cbind(data$MntWines, data$AcceptedCmp3)
+cmp <- data.frame(cmp)
+names(cmp) <- c("wine", "cmp3")
+cmp[1:3, ]
 
-mean(lol[lol$recency == 1, 1])
-length(lol[lol$recency == 1, 1])
+mean(cmp[cmp$cmp3 == 1, 1])
+length(cmp[cmp$cmp3 == 1, 1])
 
 # Ответ на четвертую компанию
-lol <- cbind(data$MntWines, data$AcceptedCmp4)
-lol <- data.frame(lol)
-names(lol) <- c("wine", "recency")
-lol[1:3, ]
+cmp <- cbind(data$MntWines, data$AcceptedCmp4)
+cmp <- data.frame(cmp)
+names(cmp) <- c("wine", "cmp4")
+cmp[1:3, ]
 
-mean(lol[lol$recency == 1, 1])
-length(lol[lol$recency == 1, 1])
+mean(cmp[cmp$cmp4 == 1, 1])
+length(cmp[cmp$cmp4 == 1, 1])
 
 # Ответ на пятую компанию
-lol <- cbind(data$MntWines, data$AcceptedCmp5)
-lol <- data.frame(lol)
-names(lol) <- c("wine", "recency")
-lol[1:3, ]
+cmp <- cbind(data$MntWines, data$AcceptedCmp5)
+cmp <- data.frame(cmp)
+names(cmp) <- c("wine", "cmp5")
+cmp[1:3, ]
 
-mean(lol[lol$recency == 1, 1])
-length(lol[lol$recency == 1, 1])
+mean(cmp[cmp$cmp5 == 1, 1])
+length(cmp[cmp$cmp5 == 1, 1])
 
 # Ответ на последнюю компанию
-lol <- cbind(data$MntWines, data$Response)
-lol <- data.frame(lol)
-names(lol) <- c("wine", "recency")
-lol[1:3, ]
+cmp <- cbind(data$MntWines, data$Response)
+cmp <- data.frame(cmp)
+names(cmp) <- c("wine", "response")
+cmp[1:3, ]
 
-mean(lol[lol$recency == 1, 1])
-length(lol[lol$recency == 1, 1])
+mean(cmp[cmp$response == 1, 1])
+length(cmp[cmp$response == 1, 1])
 
