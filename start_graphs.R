@@ -51,7 +51,7 @@ sum(percents_mat)
 data$Education[data$Education == "2n Cycle"] = "Cycle" # смысл эотго я объясню позже)
 education <- factor(data$Education)
 education
-percents_edu <- set_matrix(education)
+percents_edu <- set_frame(education)
 percents_edu
 barplot(percents_edu, width = 1, col = "blue")
 sum(percents_edu)
