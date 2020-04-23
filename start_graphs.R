@@ -50,7 +50,7 @@ sum(percents_mat)
 
 data$Education[data$Education == "2n Cycle"] = "Cycle" # смысл эотго я объясню позже)
 education <- factor(data$Education)
-education
+education[1:100]
 percents_edu <- set_frame(education)
 percents_edu
 barplot(percents_edu, width = 1, col = "blue")
@@ -126,7 +126,7 @@ barplot(expenditure, width = 1, main = "Средние траты на кажд�
 
 expenses <- cbind(data$MntWines, data$MntFruits, data$MntMeatProducts, data$MntFishProducts, data$MntSweetProducts, data$MntGoldProds)
 expenses <- data.frame(expenses)
-expenses
+expenses[1:3,]
 boxplot(x = expenses, y = 1, names = colnames(expenditure))
 # В среднем траты на вино больше и кучнее(плотнее распределены), поэтому вино выглядит привлекательно, когда в дальнейшем
 # будем находить связи, стоит обратить внимание на группу, которая больше всего тратит на вино. Далее идет рыба и золотые изделия.
@@ -221,3 +221,4 @@ mean(kids[grep(2, kids$child), 3])
 mean(kids[grep(0, kids$child), 3])
 # таким образом, у клиентов с 2-мя детьми количество ответов на рекламу = 0, так что они 
 names(kids) <- c("child", "resp", "wine")
+

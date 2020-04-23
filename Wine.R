@@ -67,45 +67,6 @@ model2 <- neuralnet(data = wine_teen, wine ~ teen, threshold = 0.001, lifesign =
 plot(model2)
 # вес подростков в количестве покупаемого вина стремится к 0
 
-# Как много PhD и Master без детей
-
-wine_educ <- cbind(data$Education, data$MntWines, data$Kidhome)
-wine_educ <- data.frame(wine_educ, stringsAsFactors = FALSE)
-names(wine_educ) <- c("educ", "wine", "kids")
-wine_educ[1:3,]
-master <- wine_educ[grep("PhD", wine_educ$educ), 2:3]
-length(master[grep(0, master$kids), 1])
-
-
-masta <- wine_educ[grep("Master", wine_educ$educ), 2:3]
-length(masta[grep(0, masta$kids), 1])
-length(masta[masta == 0])
-mean(as.numeric(masta[grep(0, masta$kids), 1]))
-
-phd <- wine_educ[grep("PhD", wine_educ$educ), 2:3]
-phd[1:5, ]
-length(phd[grep(0, phd$kids), 1])
-mean(as.numeric(phd[grep(0, phd$kids), 1]))
-
-# в этой половине 99 Master без детей со средними тратами на вино 480.7 и 156 PhD со средними тратами 583.6 без детей
-
-
-# Вино Master и PhD с подростками
-wine_educ <- cbind(data$Education, data$MntWines, data$Teenhome)
-wine_educ <- data.frame(wine_educ, stringsAsFactors = FALSE)
-names(wine_educ) <- c("educ", "wine", "teen")
-wine_educ[1:3,]
-
-
-masta <- wine_educ[grep("Master", wine_educ$educ), 2:3]
-length(masta[grep(0, masta$teen), 1])
-mean(as.numeric(masta[grep(0, masta$teen), 1]))
-
-phd <- wine_educ[grep("PhD", wine_educ$educ), 2:3]
-length(phd[grep(0, phd$teen), 1])
-mean(as.numeric(phd[grep(0, phd$teen), 1]))
-
-
 # Нейронка по вину
 
 model2 <- neuralnet(data = data, MntWines ~ Kidhome + Teenhome + Recency, hidden = c(3, 3), threshold = 0.001, lifesign = "full")
@@ -205,6 +166,104 @@ min(inc_group[grep(6, inc_group$group), 2])
 max(inc_group[grep(6, inc_group$group), 2])
 # Шестая группа с зп от 153924 до 162397 тратит на вино 40.3 (4 человека)
 
+# Ответ на первую компанию
+cmp <- cbind(data$MntWines, data$AcceptedCmp1)
+cmp <- data.frame(cmp)
+names(cmp) <- c("wine", "cmp1")
+cmp[1:3, ]
+
+mean(cmp[cmp$cmp1 == 1, 1])
+length(cmp[cmp$cmp1 == 1, 1])
+# Клиенты ответившие на первую компанию (73 человека) тратят 765.9
+
+
+# Ответ на вторую компанию
+cmp <- cbind(data$MntWines, data$AcceptedCmp2)
+cmp <- data.frame(cmp)
+names(cmp) <- c("wine", "cmp2")
+cmp[1:3, ]
+
+mean(cmp[cmp$cmp2 == 1, 1])
+length(cmp[cmp$cmp2 == 1, 1])
+
+# Ответ на третью компанию
+cmp <- cbind(data$MntWines, data$AcceptedCmp3)
+cmp <- data.frame(cmp)
+names(cmp) <- c("wine", "cmp3")
+cmp[1:3, ]
+
+mean(cmp[cmp$cmp3 == 1, 1])
+length(cmp[cmp$cmp3 == 1, 1])
+
+# Ответ на четвертую компанию
+cmp <- cbind(data$MntWines, data$AcceptedCmp4)
+cmp <- data.frame(cmp)
+names(cmp) <- c("wine", "cmp4")
+cmp[1:3, ]
+
+mean(cmp[cmp$cmp4 == 1, 1])
+length(cmp[cmp$cmp4 == 1, 1])
+
+# Ответ на пятую компанию
+cmp <- cbind(data$MntWines, data$AcceptedCmp5)
+cmp <- data.frame(cmp)
+names(cmp) <- c("wine", "cmp5")
+cmp[1:3, ]
+
+mean(cmp[cmp$cmp5 == 1, 1])
+length(cmp[cmp$cmp5 == 1, 1])
+
+# Ответ на последнюю компанию
+cmp <- cbind(data$MntWines, data$Response)
+cmp <- data.frame(cmp)
+names(cmp) <- c("wine", "response")
+cmp[1:3, ]
+
+mean(cmp[cmp$response == 1, 1])
+length(cmp[cmp$response == 1, 1])
+
+##########################################################################################################################################################################
+#####################################################################################
+#####################################################################################
+
+# Как много PhD и Master без детей
+
+wine_educ <- cbind(data$Education, data$MntWines, data$Kidhome)
+wine_educ <- data.frame(wine_educ, stringsAsFactors = FALSE)
+names(wine_educ) <- c("educ", "wine", "kids")
+wine_educ[1:3,]
+master <- wine_educ[grep("PhD", wine_educ$educ), 2:3]
+length(master[grep(0, master$kids), 1])
+
+
+masta <- wine_educ[grep("Master", wine_educ$educ), 2:3]
+length(masta[grep(0, masta$kids), 1])
+length(masta[masta == 0])
+mean(as.numeric(masta[grep(0, masta$kids), 1]))
+
+phd <- wine_educ[grep("PhD", wine_educ$educ), 2:3]
+phd[1:5, ]
+length(phd[grep(0, phd$kids), 1])
+mean(as.numeric(phd[grep(0, phd$kids), 1]))
+
+# в этой половине 99 Master без детей со средними тратами на вино 480.7 и 156 PhD со средними тратами 583.6 без детей
+
+
+
+# Вино Master и PhD с подростками
+wine_educ <- cbind(data$Education, data$MntWines, data$Teenhome)
+wine_educ <- data.frame(wine_educ, stringsAsFactors = FALSE)
+names(wine_educ) <- c("educ", "wine", "teen")
+wine_educ[1:3,]
+
+masta <- wine_educ[grep("Master", wine_educ$educ), 2:3]
+length(masta[grep(0, masta$teen), 1])
+mean(as.numeric(masta[grep(0, masta$teen), 1]))
+
+phd <- wine_educ[grep("PhD", wine_educ$educ), 2:3]
+length(phd[grep(0, phd$teen), 1])
+mean(as.numeric(phd[grep(0, phd$teen), 1]))
+
 # Группа с зп 60+ без детей
 short <- inc_group[inc_group$income > 60000, 3:5]
 short[1:3, ]
@@ -262,97 +321,3 @@ length(as.numeric(tmp))
 # маленьких детей, зарплата 60+, год рождения - меньше 1960. оптимальным будет выбор с относительно большой средней ценой, и не
 # очень большим количеством представителей данной группы.
 
-# Ответ на первую компанию
-cmp <- cbind(data$MntWines, data$AcceptedCmp1)
-cmp <- data.frame(cmp)
-names(cmp) <- c("wine", "cmp1")
-cmp[1:3, ]
-
-mean(cmp[cmp$cmp1 == 1, 1])
-length(cmp[cmp$cmp1 == 1, 1])
-# Клиенты ответившие на первую компанию (73 человека) тратят  765.9
-
-
-# Ответ на вторую компанию
-cmp <- cbind(data$MntWines, data$AcceptedCmp2)
-cmp <- data.frame(cmp)
-names(cmp) <- c("wine", "cmp2")
-cmp[1:3, ]
-
-
-mean(cmp[cmp$cmp2 == 1, 1])
-length(cmp[cmp$cmp2 == 1, 1])
-# Клиенты ответившие на вторую компанию (15 человек) тратят 918
-
-# Ответ на третью компанию
-cmp <- cbind(data$MntWines, data$AcceptedCmp3)
-cmp <- data.frame(cmp)
-names(cmp) <- c("wine", "cmp3")
-cmp[1:3, ]
-
-mean(cmp[cmp$cmp3 == 1, 1])
-length(cmp[cmp$cmp3 == 1, 1])
-# Клиенты ответившие на третью компанию (78 человек) тратят 315
-
-# Ответ на четвертую компанию
-cmp <- cbind(data$MntWines, data$AcceptedCmp4)
-cmp <- data.frame(cmp)
-names(cmp) <- c("wine", "cmp4")
-cmp[1:3, ]
-
-mean(cmp[cmp$cmp4 == 1, 1])
-length(cmp[cmp$cmp4 == 1, 1])
-# Клиенты ответившие на первую компанию (81 человек) тратят 781
-
-# Ответ на пятую компанию
-cmp <- cbind(data$MntWines, data$AcceptedCmp5)
-cmp <- data.frame(cmp)
-names(cmp) <- c("wine", "cmp5")
-cmp[1:3, ]
-
-mean(cmp[cmp$cmp5 == 1, 1])
-length(cmp[cmp$cmp5 == 1, 1])
-# Клиенты ответившие на первую компанию (79 человека) тратят 859
-
-# Ответ на последнюю компанию
-cmp <- cbind(data$MntWines, data$Response)
-cmp <- data.frame(cmp)
-names(cmp) <- c("wine", "response")
-cmp[1:3, ]
-
-mean(cmp[cmp$response == 1, 1])
-length(cmp[cmp$response == 1, 1])
-# Клиенты ответившие на первую компанию (157 человека) тратят 481
-
-# Анализ семейного положения
-
-sp <- cbind(data$Marital_Status, data$MntWines)
-sp <- data.frame(sp, stringsAsFactors = FALSE)
-names(sp) <- c("sp", "wines")
-sp[1:3,]
-
-my_mean(sp[sp$sp == "Married", 2])
-length(sp[sp$sp == "Married", 2])
-# Женатые тратят 415 (415 человек)
-
-my_mean(sp[sp$sp == "Together", 2])
-length(sp[sp$sp == "Together", 2])
-# Парочки - 330 (286 человек)
-
-my_mean(sp[sp$sp == "Single", 2])
-length(sp[sp$sp == "Single", 2])
-# Одиночки тратят 297 (246 человек)
-
-my_mean(sp[sp$sp == "Divorced", 2])
-length(sp[sp$sp == "Divorced", 2])
-# Разведенные тратят 298 (118 человек)
-
-my_mean(sp[sp$sp == "Widow", 2])
-length(sp[sp$sp == "Widow", 2])
-# Вдовы - 298 (37 человек)
-
-my_mean(sp[sp$sp == "Alone", 2])
-length(sp[sp$sp == "Alone", 2])
-# Alone 3 человека - 184
-
-# Женатые тратят на вино больше других групп
