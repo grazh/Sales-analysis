@@ -270,7 +270,7 @@ cmp[1:3, ]
 
 mean(cmp[cmp$cmp1 == 1, 1])
 length(cmp[cmp$cmp1 == 1, 1])
-# Клиенты ответившие на первую компанию (73 человека) тратят 765.9
+# Клиенты ответившие на первую компанию (73 человека) тратят  765.9
 
 
 # Ответ на вторую компанию
@@ -279,8 +279,10 @@ cmp <- data.frame(cmp)
 names(cmp) <- c("wine", "cmp2")
 cmp[1:3, ]
 
+
 mean(cmp[cmp$cmp2 == 1, 1])
 length(cmp[cmp$cmp2 == 1, 1])
+# Клиенты ответившие на вторую компанию (15 человек) тратят 918
 
 # Ответ на третью компанию
 cmp <- cbind(data$MntWines, data$AcceptedCmp3)
@@ -290,6 +292,7 @@ cmp[1:3, ]
 
 mean(cmp[cmp$cmp3 == 1, 1])
 length(cmp[cmp$cmp3 == 1, 1])
+# Клиенты ответившие на третью компанию (78 человек) тратят 315
 
 # Ответ на четвертую компанию
 cmp <- cbind(data$MntWines, data$AcceptedCmp4)
@@ -299,6 +302,7 @@ cmp[1:3, ]
 
 mean(cmp[cmp$cmp4 == 1, 1])
 length(cmp[cmp$cmp4 == 1, 1])
+# Клиенты ответившие на первую компанию (81 человек) тратят 781
 
 # Ответ на пятую компанию
 cmp <- cbind(data$MntWines, data$AcceptedCmp5)
@@ -308,6 +312,7 @@ cmp[1:3, ]
 
 mean(cmp[cmp$cmp5 == 1, 1])
 length(cmp[cmp$cmp5 == 1, 1])
+# Клиенты ответившие на первую компанию (79 человека) тратят 859
 
 # Ответ на последнюю компанию
 cmp <- cbind(data$MntWines, data$Response)
@@ -317,4 +322,37 @@ cmp[1:3, ]
 
 mean(cmp[cmp$response == 1, 1])
 length(cmp[cmp$response == 1, 1])
+# Клиенты ответившие на первую компанию (157 человека) тратят 481
 
+# Анализ семейного положения
+
+sp <- cbind(data$Marital_Status, data$MntWines)
+sp <- data.frame(sp, stringsAsFactors = FALSE)
+names(sp) <- c("sp", "wines")
+sp[1:3,]
+
+my_mean(sp[sp$sp == "Married", 2])
+length(sp[sp$sp == "Married", 2])
+# Женатые тратят 415 (415 человек)
+
+my_mean(sp[sp$sp == "Together", 2])
+length(sp[sp$sp == "Together", 2])
+# Парочки - 330 (286 человек)
+
+my_mean(sp[sp$sp == "Single", 2])
+length(sp[sp$sp == "Single", 2])
+# Одиночки тратят 297 (246 человек)
+
+my_mean(sp[sp$sp == "Divorced", 2])
+length(sp[sp$sp == "Divorced", 2])
+# Разведенные тратят 298 (118 человек)
+
+my_mean(sp[sp$sp == "Widow", 2])
+length(sp[sp$sp == "Widow", 2])
+# Вдовы - 298 (37 человек)
+
+my_mean(sp[sp$sp == "Alone", 2])
+length(sp[sp$sp == "Alone", 2])
+# Alone 3 человека - 184
+
+# Женатые тратят на вино больше других групп
