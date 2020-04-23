@@ -265,7 +265,7 @@ tmp[1:30]
 my_mean(tmp)
 
 # Сравним со средними тратами на сладкое
-my_mean(tmp) > my_mean(data$MntMeatProducts)
+my_mean(tmp) > my_mean(data$MntSweetProducts)
 length(tmp)
 
 
@@ -278,7 +278,7 @@ tmp[1:30]
 
 
 my_mean(tmp)
-my_mean(tmp) > my_mean(data$MntMeatProducts)
+my_mean(tmp) > my_mean(data$MntSweetProducts)
 length(tmp)
 
 
@@ -290,18 +290,18 @@ tmp[1:30]
 
 
 my_mean(tmp)
-my_mean(tmp) > my_mean(data$MntMeatProducts)
+my_mean(tmp) > my_mean(data$MntSweetProducts)
 length(tmp)
 
 # Группа с зп 80+ без детей Cycle
 short <- inc_group[inc_group$income > 80000, 3:6]
 short[1:3, ]
 tmp <- short[short$educ == "2n Cycle", 1]
-tmp[1:9]
+tmp[1:30]
 
 
 my_mean(tmp)
-my_mean(tmp) > my_mean(data$MntMeatProducts)
+my_mean(tmp) > my_mean(data$MntSweetProducts)
 length(tmp)
 
 
@@ -313,7 +313,7 @@ tmp[1:30]
 
 
 my_mean(tmp)
-my_mean(tmp) > my_mean(data$MntMeatProducts)
+my_mean(tmp) > my_mean(data$MntSweetProducts)
 length(tmp)
 
 # Группа с зп 80+ без детей Grad
@@ -324,7 +324,7 @@ tmp[1:30]
 
 
 my_mean(tmp)
-my_mean(tmp) > my_mean(data$MntMeatProducts)
+my_mean(tmp) > my_mean(data$MntSweetProducts)
 length(tmp)
 
 
@@ -337,7 +337,7 @@ tmp <- short[short$educ == "PhD", 1]
 tmp[1:30]
 
 my_mean(tmp)
-my_mean(tmp) > mean(data$MntMeatProducts)
+my_mean(tmp) > mean(data$MntSweetProducts)
 length(tmp)
 
 
@@ -349,7 +349,7 @@ tmp <- short[short$educ == "2n Cycle", 1]
 tmp[1:30]
 
 my_mean(tmp)
-my_mean(tmp) > mean(data$MntMeatProducts)
+my_mean(tmp) > mean(data$MntSweetProducts)
 length(tmp)
 
 
@@ -361,7 +361,7 @@ tmp <- short[short$educ == "Graduation", 1]
 tmp[1:30]
 
 my_mean(tmp)
-my_mean(tmp) > mean(data$MntMeatProducts)
+my_mean(tmp) > mean(data$MntSweetProducts)
 length(tmp) 
 
 
@@ -370,10 +370,10 @@ short <- inc_group[inc_group$income > 80000, 3:6]
 short[1:3, ]
 tmp <- short[short$kids == 0, 1:3]
 tmp <- short[short$educ == "2n Cycle", 1]
-tmp[1:5]
+tmp[1:30]
 
 my_mean(tmp)
-my_mean(tmp) > mean(data$MntMeatProducts)
+my_mean(tmp) > mean(data$MntSweetProducts)
 length(tmp)
 
 
@@ -385,7 +385,7 @@ tmp <- short[short$educ == "Graduation", 1]
 tmp[1:30]
 
 my_mean(tmp)
-my_mean(tmp) > mean(data$MntMeatProducts)
+my_mean(tmp) > mean(data$MntSweetProducts)
 length(tmp) 
 
 # Группа с PhD без детей
@@ -395,7 +395,7 @@ tmp <- short[short$kids == 0, 1]
 tmp[1:30]
 
 my_mean(tmp)
-my_mean(tmp) > mean(data$MntMeatProducts)
+my_mean(tmp) > mean(data$MntSweetProducts)
 length(tmp)
 
 
@@ -407,7 +407,7 @@ tmp <- short[short$kids == 0, 1]
 tmp[1:30]
 
 my_mean(tmp)
-my_mean(tmp) > mean(data$MntMeatProducts)
+my_mean(tmp) > mean(data$MntSweetProducts)
 length(tmp)
 
 
@@ -418,7 +418,7 @@ tmp <- short[short$kids == 0, 1]
 tmp[1:30]
 
 my_mean(tmp)
-my_mean(tmp) > mean(data$MntMeatProducts)
+my_mean(tmp) > mean(data$MntSweetProducts)
 length(tmp)
 
 
@@ -430,6 +430,5 @@ tmp <- tmp[tmp$year <= 1960, 1]
 tmp[1:30]
 
 my_mean(tmp)
-my_mean(tmp) > mean(data$MntMeatProducts)
+my_mean(tmp) > mean(data$MntSweetProducts)
 length(as.numeric(tmp))
-
